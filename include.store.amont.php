@@ -92,12 +92,7 @@ class CatalogCondCtrlStoreQuantity extends CGlobalCondCtrlComplex
             if (!isset($control['PARENT']))
                 $control['PARENT'] = true;
 
-            //$control['EXIST_HANDLER'] = 'Y';
-
-            //$control['MODULE_ID'] = 'mymodule';
-
             $control['MULTIPLE'] = 'N';
-            //$control['GROUP'] = 'N';
         }
         unset($control);
 
@@ -137,11 +132,14 @@ class CatalogCondCtrlStoreQuantity extends CGlobalCondCtrlComplex
 		$stoteArrstr .= ')';
 		
 		$strResult  = '(CatalogCondCtrlStoreQuantity::qStoreC($arProduct,'.$stoteArrstr.'))=='.$logic;
-		//prn_($strResult2,true);
 	
-        return (!$boolError ? $strResult : false);		
+        return  $strResult;		
 		
     }	
+	/**
+	* @param array|array
+	* @return bool
+	*/
 	public static function qStoreC($arProduct,$arrStore=array())
 	{
 		$rsStore=CCatalogStoreProduct::GetList(array(),array("PRODUCT_ID"=>$arProduct["ID"],"STORE_ID"=>$arrStore),false,false,array("AMOUNT")); 
